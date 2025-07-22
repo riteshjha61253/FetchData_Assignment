@@ -3,11 +3,14 @@ import './App.css'
 import CustomTable from './components/CustomTable';
 import CustomPaginator from './components/customPaginator';
 
+
 function App() {
   const [page, setPage] = useState(1);
   const [fetchApiData, setFetchApiData] = useState([]);
   const [loading, setLoading] = useState(false);
   const [totalRecords, setTotalRecords] = useState(0);
+  const [selectedProducts, setSelectedProducts] = useState<any[]>([]);
+  const [rowClick, setRowClick] = useState(false);
 
   useEffect(() => {
     console.log("fetchApiData updated:", fetchApiData);
@@ -43,11 +46,11 @@ function App() {
         <p>Loading...</p>
       ) : (
         <>
-          <CustomTable fetchApiData={fetchApiData} />
-          <CustomPaginator
-            currentPage={page}
-            totalRecords={totalRecords}
-            onPageChange={setPage}
+          <CustomTable fetchApiData={fetchApiData} selectedProducts={selectedProducts}
+            setSelectedProducts={setSelectedProducts}
+            rowClick={rowClick}
+            setRowClick={setRowClick} />
+          <CustomPaginator currentPage={page} totalRecords={totalRecords} onPageChange={setPage}
           />
         </>
       )}
