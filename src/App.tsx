@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import CustomTable from './components/CustomTable';
 
 function App() {
   const [page, setPage] = useState(1);
@@ -7,8 +8,8 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-  console.log("fetchApiData updated:", fetchApiData);
-}, [fetchApiData]);
+    console.log("fetchApiData updated:", fetchApiData);
+  }, [fetchApiData]);
 
   const fetchData = async (page: number) => {
     setLoading(true);
@@ -35,7 +36,9 @@ function App() {
 
   return (
     <>
-
+    {
+    loading ? ( <p>Loading...</p> ) : ( <CustomTable fetchApiData={fetchApiData} /> )
+    }
     </>
   )
 }
