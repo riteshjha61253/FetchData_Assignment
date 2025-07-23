@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { OverlayPanel } from 'primereact/overlaypanel';
 import type { OverlayPanel as OverlayPanelType } from 'primereact/overlaypanel';
 import { Button } from 'primereact/button';
