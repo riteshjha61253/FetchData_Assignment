@@ -7,13 +7,14 @@ import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
 import OverlayDropdown from './inputOverlay';
 import '../App.css'
-interface Data_Format {
+export interface Data_Format {
     title: string;
     place_of_origin: string;
     artist_display: string;
     inscriptions: string;
     date_start: number;
     date_end: number;
+    id: string | number;
 }
 
 interface Props {
@@ -22,10 +23,11 @@ interface Props {
     setSelectedProducts: (data: any[]) => void;
     rowClick: boolean;
     setRowClick: (val: boolean) => void;
+    onAutoSelectRows: (count: number) => void;
 }
 
 
-const CustomTable = ({ fetchApiData, selectedProducts, setSelectedProducts, rowClick, setRowClick, }: Props) => {
+const CustomTable = ({ fetchApiData, selectedProducts, setSelectedProducts, rowClick, setRowClick, onAutoSelectRows }: Props) => {
     return (
         <>
             <div className="card">
@@ -35,11 +37,13 @@ const CustomTable = ({ fetchApiData, selectedProducts, setSelectedProducts, rowC
                 </div>
 
                 <DataTable value={fetchApiData} selectionMode={rowClick ? null : 'checkbox'} selection={selectedProducts} onSelectionChange={(e: any) => setSelectedProducts(e.value)} dataKey="id" tableStyle={{ minWidth: '50rem' }}>
+                    
                     <Column selectionMode="multiple" headerStyle={{ width: '3rem' }} />
+                    
                     <Column field="title"
                         header={() => (
                             <div className="flex align-items-center gap-2" style={{ display: 'flex', marginLeft: "-20px" }}>
-                                <OverlayDropdown className="mr-5 overlay" />
+                                <OverlayDropdown onAutoSelectRows={onAutoSelectRows} />
                                 <span>Title</span>
                             </div>
                         )}

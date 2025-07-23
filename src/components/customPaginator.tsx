@@ -1,4 +1,4 @@
-import { Paginator} from 'primereact/paginator';
+import { Paginator } from 'primereact/paginator';
 import type { PaginatorPageChangeEvent } from 'primereact/paginator';
 
 
@@ -8,8 +8,8 @@ interface PaginatorFormat {
   onPageChange: (newPage: number) => void;
 }
 
-const CustomPaginator=({ currentPage, totalRecords, onPageChange }: PaginatorFormat) => {
-  const rowsPerPage = 10;
+const CustomPaginator = ({ currentPage, totalRecords, onPageChange }: PaginatorFormat) => {
+  const rowsPerPage = 12;
 
   const handlePageChange = (event: PaginatorPageChangeEvent) => {
     const newPage = event.page + 1;
