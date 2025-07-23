@@ -1,14 +1,11 @@
-/* .p-datatable .p-datatable-tbody > tr.p-highlight {
-  background-color: transparent !important;
-  color: inherit !important;
-} */
+@import "tailwindcss";
 .p-datatable .p-datatable-tbody > tr.p-highlight {
-  background-color: rgba(36, 16, 255, 0.149) !important; /* Light blue transparent */
+  background-color: rgba(36, 16, 255, 0.149) !important; 
   color: inherit;
 }
-/* Reset paginator button active state */
+
 .p-paginator .p-highlight {
-  background-color: #00796b !important;  /* or whatever your intended color is */
+  background-color: #00796b !important;  
   color: white !important;
   border-radius: 50% !important;
   box-shadow: none !important;

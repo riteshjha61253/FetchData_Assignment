@@ -5,7 +5,8 @@ import { InputSwitch } from 'primereact/inputswitch';
 import 'primereact/resources/themes/lara-light-teal/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
-// import '../index.css'
+import OverlayDropdown from './inputOverlay';
+import '../App.css'
 interface Data_Format {
     title: string;
     place_of_origin: string;
@@ -33,9 +34,21 @@ const CustomTable = ({ fetchApiData, selectedProducts, setSelectedProducts, rowC
                     <label htmlFor="input-rowclick">Row Click</label>
                 </div>
 
-                <DataTable value={fetchApiData} selectionMode={rowClick ? null : 'checkbox'} selection={selectedProducts} onSelectionChange={(e:any) => setSelectedProducts(e.value)} dataKey="id" tableStyle={{ minWidth: '50rem' }}>
-                    <Column selectionMode="multiple" headerStyle={{ width: '3rem' }}></Column>
-                    <Column field="title" header="Title"></Column>
+                <DataTable value={fetchApiData} selectionMode={rowClick ? null : 'checkbox'} selection={selectedProducts} onSelectionChange={(e: any) => setSelectedProducts(e.value)} dataKey="id" tableStyle={{ minWidth: '50rem' }}>
+                    <Column selectionMode="multiple" headerStyle={{ width: '3rem' }} />
+                    <Column field="title"
+                        header={() => (
+                            <div className="flex align-items-center gap-2" style={{ display: 'flex', marginLeft: "-20px" }}>
+                                <OverlayDropdown className="mr-5 overlay" />
+                                <span>Title</span>
+                            </div>
+                        )}
+                        body={(rowData) => (
+                            <div className="custom-title-cell">
+                                {rowData.title}
+                            </div>
+                        )}
+                    />
                     <Column field="place_of_origin" header="Place_Of_Origin"></Column>
                     <Column field="artist_display" header="Artist_Display"></Column>
                     <Column field="inscriptions" header="Inscriptions"></Column>
