@@ -37,7 +37,7 @@ const CustomTable = ({ fetchApiData, selectedProducts, setSelectedProducts, rowC
                 </div>
 
                 <DataTable value={fetchApiData} selectionMode={rowClick ? null : 'checkbox'} selection={selectedProducts} onSelectionChange={(e: any) => setSelectedProducts(e.value)} dataKey="id" tableStyle={{ minWidth: '50rem' }}>
-                    
+
                     <Column selectionMode="multiple" headerStyle={{ width: '3rem' }} />
                     
                     <Column field="title"
@@ -57,7 +57,7 @@ const CustomTable = ({ fetchApiData, selectedProducts, setSelectedProducts, rowC
                     <Column field="artist_display" header="Artist_Display"></Column>
                     <Column field="inscriptions" header="Inscriptions"></Column>
                     <Column field="date_start" header="Date_Start"></Column>
-                    <Column field="date_end" header="date_end"></Column>
+                    <Column field="date_end" header="Date_End"></Column>
                 </DataTable>
             </div>
         </>
